@@ -10,5 +10,6 @@ for i in range(0,5):
     res.append(mc.get_coords())
 
 print(res)
+mc.release_all_servos()
     
     
