@@ -7,7 +7,7 @@ for i in range(0,5):
     print("scanning cords, change position within 5 seconds",i)
     time.sleep(5)
     mc.jog_stop()
-    coord_list[i] = mc.get_coords())
+    coord_list[i] = mc.get_coords()
 
 print(coord_list)
 
