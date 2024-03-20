@@ -4,13 +4,13 @@ pick_coord_list = {}
 mc = MyCobot('/dev/ttyAMA0',1000000)
 for i in range(1,6):
     mc.release_all_servos()
-    if(i==1):
+    if(k==1):
         print("hover above the pickup location, within 5 seconds")
-    elif(i==2):
+    elif(k==2):
         print("get the open gripper in range on picking up, within 5 seconds")
-    elif(i==3):
+    elif(k==3):
         print("now hover back above the location, within 5 seconds")
-    elif(i==4):
+    elif(k==4):
         print("now hover above the drop location, within 5 seconds")
     else:
         print("now go above get the gripper to the drop point, within 5 seconds")
