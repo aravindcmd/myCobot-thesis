@@ -4,7 +4,7 @@ coord_list = {}
 mc = MyCobot('/dev/ttyAMA0',1000000)
 for i in range(0,5):
     mc.release_all_servos()
-    print("scanning cord in 5 seconds", )
+    print("scanning cords, change position within 5 seconds",i)
     time.sleep(5)
     mc.jog_stop()
     coord_list[i] = mc.get_coords())
@@ -12,8 +12,9 @@ for i in range(0,5):
 print(coord_list)
 
 for k,v in coord_list.items():
-    time.sleep(3)
-    mc.send_coords(v,20,1)
+    print("changing cords, stay near robot and be alert")
+    time.sleep(5)
+    mc.send_coords(v,30,1)
 
 mc.release_all_servos()
 
