@@ -1,47 +1,41 @@
 from pymycobot.mycobot import MyCobot
 import time
-pick_coord_list = {}
+coord_list = {}
 mc = MyCobot('/dev/ttyAMA0',1000000)
-for i in range(1,6):
+flag = "n"
+for i in range(0,6):
     mc.release_all_servos()
-    if(k==1):
-        print("hover above the pickup location, within 5 seconds")
-    elif(k==2):
-        print("get the open gripper in range on picking up, within 5 seconds")
-    elif(k==3):
-        print("now hover back above the location, within 5 seconds")
-    elif(k==4):
-        print("now hover above the drop location, within 5 seconds")
+    print("scanning angles, change position within 5 seconds")
+    if(i==0):
+        print("set the standby postion")
+    elif(i ==1):
+        print("set the hover above target postion")
+    elif(i ==2):
+        print("set the gripper within target reach")
+    elif(i == 3):
+        print("set the hover above drop postion")
+    elif(i == 4):
+        print("set the gripper within the drop reach")
     else:
-        print("now go above get the gripper to the drop point, within 5 seconds")
-    time.sleep(5)
+        print("set the exit safe postion")
+    flag = input("enter y once done setting")
+    # time.sleep(5)
     mc.jog_stop()
-    pick_coord_list[i] = mc.get_coords()
-    
+    coord_list[i] = mc.get_angles()
 
-print(pick_coord_list)
+print(coord_list)
 
-for k,v in pick_coord_list.items():
-    if(i==1):
-        print("hovering above the pickup point, stay alert")
-    elif(i==2):
-        print("gripper going near")
-        time.sleep(2)
-        mc.set_gripper_state(1, 70)
-    elif(i==3):
-        print("hovering above")
-    elif(i==4):
-        print("going to drop location")
-    else:
-        print("print dropping off")
-        mc.set_gripper_state(0, 70)
+mc.set_gripper_state(0, 70)
+for k,v in coord_list.items():
+    print("changing angles, stay near robot and be alert")
+    if(k == 2):
+        mc.set_gripper_state(1,70)
+    if(k == 4):
+        mc.set_gripper_state(0,70)
     time.sleep(5)
-    if(i==1):
-        mc.set_gripper_state(0, 70)
-    mc.send_coords(v,40,1)
+    mc.send_angles(v,30)
 
 mc.release_all_servos()
-mc.set_gripper_state(0, 70)
 
 # dict ={
 #     1: [3213.3,3213,123,123],
