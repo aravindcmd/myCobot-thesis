@@ -27,13 +27,16 @@ print(coord_list)
 
 mc.set_gripper_state(0, 70)
 for k,v in coord_list.items():
+    mc = MyCobot('/dev/ttyAMA0',1000000)
     print("changing angles, stay near robot and be alert")
     if(k == 2):
         mc.set_gripper_state(1,70)
+        time.sleep(2)
     if(k == 4):
         mc.set_gripper_state(0,70)
-    time.sleep(5)
+        time.sleep(2)
     mc.send_angles(v,30)
+    time.sleep(5)
 
 mc.release_all_servos()
 
