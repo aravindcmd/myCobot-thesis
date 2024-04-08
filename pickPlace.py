@@ -37,7 +37,7 @@ for k,v in coord_list.items():
         time.sleep(2)
     mc.send_angles(v,30)
     time.sleep(5)
-
+print(coord_list.items())
 mc.release_all_servos()
 
 # dict ={
