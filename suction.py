@@ -22,7 +22,7 @@ def pump(state):
 pump(0)
 time.sleep(1)
 # mc.send_angles(pickup[1], 40)
-pumpt(1)
+pump(1)
 time.sleep(3)
 pump(0)
 mc.release_all_servos()
