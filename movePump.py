@@ -25,6 +25,8 @@ def pump(state):
 
 
 mc = MyCobot('/dev/ttyAMA0',1000000)
+mc.send_angles([0,0,90,0,0,0],30)
+time.sleep(5)
 mc.send_angles([92.9,(-90),90,(-90),0,0],30)
 time.sleep(5)
 mc.send_angles([92.9,(-125),90,(-70),0,0],30)
