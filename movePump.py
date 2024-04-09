@@ -20,16 +20,12 @@ def pump(state):
         GPIO.output(20, 1)
         GPIO.output(21, 1)
 
-
-
-
-
 mc = MyCobot('/dev/ttyAMA0',1000000)
 mc.send_angles([0,0,0,0,0,0],30)
 time.sleep(5)
-mc.send_angles([92.9,(-90),90,(-90),0,0],30)
+mc.send_angles([0,(-135),0,(0),0,0],30)
 time.sleep(5)
-mc.send_angles([92.9,(-125),90,(-70),0,0],30)
+mc.send_angles([0,(-135),90,(-45),0,0],30)
 pump(1)
 time.sleep(5)
 mc.send_angles([92.9,(-90),90,(-70),0,0],30)
